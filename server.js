@@ -1,17 +1,27 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const sgMail = require('@sendgrid/mail');
+const chores = require('./controllers/chores');
+const groups = require('./controllers/groups');
+//const settings = require('./controllers/settings');
+
+/* 
+EMAIL SERVER FOR CHORE APP
+- uses sendgrid api to send emails
+- auth with JWT
+*/
 
 // Process.env
 const {
     PORT = 5000,
     NODE_ENV = 'dev',
-    TEMP_SECRET = 'lolzlolz',
 } = process.env;
 
 const IN_PROD = NODE_ENV === 'prod';
 const app = express();
 
+// body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Add Chores Email

@@ -1,30 +1,35 @@
 const jwt = require('jsonwebtoken');
 
 // CHANGE TO PROCESS.ENV
-const secret = 'temp_lol_secret';
+const secret = 'temp_lol_secrettemp_lol_secrettemp_lol_secrettemp_lol_secrettemp_lol_secrettemp_lol_secret';
 
 const checkToken = (req) => {
-	let token = req.headers['x-access-token'] || req.headers['authorization']; 
-	if (token.startsWith('Bearer ')) {
-    	// Remove Bearer from string
-    	token = token.slice(7, token.length);
-  	}
-  	if (token) {
-		jwt.verify(token, secret, (err, decoded) => {
-			if (err) {
-				console.log('token err',err);
-				return false;
-			}
-			else {
-				console.log('token decoded!',decoded);
-				return true;
-			}
-    	});
-	} 
-	else {
-		console.log('no token in req');
-    	return false;
-    }
+	return new Promise((resolve, reject) => {
+		let token = req.headers['authorization']; 
+		console.log('toke 1 - ',token)
+		if (token.startsWith('Bearer ')) {
+			// Remove Bearer from string
+			token = token.slice(7, token.length);
+		}
+		console.log('toke 2 - ',token)
+		if (token) {
+			jwt.verify(token, secret, (err, decoded) => {
+				if (err) {
+					console.log('token err',err);
+					reject();
+				}
+				else {
+					console.log('token decoded!',decoded);
+					resolve(decoded);
+				}
+			});
+		} 
+		else {
+			console.log('no token in req');
+			reject();
+		}	
+	})
+	
 }
 
 module.exports = {
