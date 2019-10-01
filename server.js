@@ -4,6 +4,7 @@ const sgMail = require('@sendgrid/mail');
 const chores = require('./controllers/chores');
 const groups = require('./controllers/groups');
 //const settings = require('./controllers/settings');
+const users = require('./controllers/users');
 
 /* 
 EMAIL SERVER FOR CHORE APP
@@ -23,6 +24,9 @@ const app = express();
 // body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// Verify User Email 
+app.post('/verifyuseremail', (req,res) => {users.verifyEmail(req,res,sgMail)})
 
 // Add Chores Email
 app.post('/addchores',  (req,res) => {chores.addChores(req,res,sgMail)});

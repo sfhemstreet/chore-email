@@ -1,4 +1,5 @@
 const token = require('../utils/token');
+const template = require('../utils/emailTemplate');
 
 const forgotPassword = (req,res,sgMail) => {
     const isValid = token.checkToken(req);
