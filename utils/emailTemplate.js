@@ -1,4 +1,19 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html data-editor-version="2" class="sg-campaigns" xmlns="http://www.w3.org/1999/xhtml"><head>
+const emailTemplate = (title, text, buttonText, buttonLink, aboveButtonText) => {
+
+    const email_title = title
+    const chore_logo_src = 'https://i.imgur.com/9YeCrLD.png';
+    const chore_homepage_link = 'http://localhost:3000/';
+    const linkedin_img_src = 'http://www.vhtrucks.com/wp-content/uploads/2018/01/linkedin-logo.png';
+    const linkedin_link = 'https://www.linkedin.com/in/spencer-hemstreet-094331177/';
+    const github_img_src = 'http://pluspng.com/img-png/github-octocat-logo-png-check-me-out-on-github-500.png';
+    const chore_github_link = 'https://github.com/sfhemstreet/chore-app';
+    const email_text = text;
+    const button_text = buttonText;
+    const button_link = buttonLink;
+    const above_button_text = aboveButtonText;
+
+    const emailTemp = 
+    `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html data-editor-version="2" class="sg-campaigns" xmlns="http://www.w3.org/1999/xhtml"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <!--[if !mso]><!-->
@@ -260,4 +275,11 @@
     </center>
   
 
-</body></html>
+</body></html>`;
+
+    return emailTemp;
+}
+
+module.exports = {
+    emailTemplate
+}

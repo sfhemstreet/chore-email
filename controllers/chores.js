@@ -1,7 +1,8 @@
 const token = require('../utils/token');
+const template = require('../utils/emailTemplate');
 
 const addChores = async (req,res,sgMail) => {
-    console.log('new add chores req');
+    
     const data = await token.checkToken(req);
     if(!data){
         return res.json('Token is not valid');
@@ -10,6 +11,7 @@ const addChores = async (req,res,sgMail) => {
     const group_name = groupName.group_name;
 
     const emailBody = `${group_name} has new chores! Get em done. Or else.`;
+    const htmlVersion = template.emailTemplate('New Chores',emailBody, 'Chore!', 'http://localhost:3000/','Get em done! Knock em out!');
 
     emails.forEach(e => {
         sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -18,7 +20,7 @@ const addChores = async (req,res,sgMail) => {
             from: 'pleasedoyourchores@gmail.com',
             subject: `New Chores for ${group_name}`,
             text: emailBody,
-            //html: ''
+            html: htmlVersion
         };
         sgMail.send(msg); 
         console.log('add chores message',msg);   
