@@ -143,7 +143,7 @@ const emailTemplate = (title, text, buttonText, buttonLink, aboveButtonText) => 
 </tbody></table><table class="wrapper" role="module" data-type="image" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="qa8oMphYHuL7xyQrTVscgD">
     <tbody><tr>
       <td style="font-size:6px; line-height:10px; padding:30px 0px 0px 0px;" valign="top" align="center">
-        <img class="max-width" border="0" style="display:block; color:#000000; text-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16px; max-width:50% !important; width:50%; height:auto !important;" src="${chore_logo_src}" alt="Chore!" width="300" data-responsive="true" data-proportionally-constrained="false">
+        <img class="max-width" border="0" style="display:block; color:#000000; text-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16px; max-width:50% !important; width:50%; height:auto !important;" src="${chore_logo_src}" alt="Chore!" width="100" height="50" data-responsive="true" data-proportionally-constrained="false">
       </td>
     </tr>
   </tbody></table><table class="module" role="module" data-type="spacer" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="bdzDb4B4pnnez4W7L1KpxJ">
@@ -234,7 +234,7 @@ const emailTemplate = (title, text, buttonText, buttonLink, aboveButtonText) => 
                               <td style="font-size: 0; line-height: 0;" width="60">&nbsp;</td>
                               <td>
                                   <a href="${chore_homepage_link}" target="_blank">
-                                      <img src="${chore_logo_src}" alt="Chore HomePage" width="50" height="50"
+                                      <img src="${chore_logo_src}" alt="Chore HomePage" width="100" height="50"
                                            style="display: block;"  border="0"/>
                                   </a>
                               </td>

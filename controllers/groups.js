@@ -8,7 +8,8 @@ const newGroup = (req,res,sgMail) => {
     }
     const {emails,groupName} = req.body;
 
-    const emailBody = `You have been added to a new Chore Group! Chore is a way of staying up to date with chores without having to bother eachother. If you dont have an account, signup using this email and you will connected to the group, ${groupName}.`;
+    const emailBody = `You have been added to a new chore group, ${groupName}! If you already have an account with us, log in and check it out. If you are new, sign up! It's free, easy, and you'll be connected to your group just by registering with this email. Chore is an easy way to manage all the things that need to get done.`;
+    // emailTemplate takes in - Title , Text , Button Text , Button Link URL , and text that goes above button -
     const htmlVersion = template.emailTemplate('Chore!',emailBody);
 
     emails.forEach(e => {
@@ -21,7 +22,7 @@ const newGroup = (req,res,sgMail) => {
             html: htmlVersion
         };
         sgMail.send(msg); 
-          
+        console.log('new group email - ',msg)
     });
 
 }

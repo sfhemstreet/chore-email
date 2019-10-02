@@ -11,6 +11,8 @@ const addChores = async (req,res,sgMail) => {
     const group_name = groupName.group_name;
 
     const emailBody = `${group_name} has new chores! Get em done. Or else.`;
+    const emailText = `${emailBody} Check them out here - http://localhost:3000/`;
+    // emailTemplate takes in - Title , Text , Button Text , Button Link URL , and text that goes above button -
     const htmlVersion = template.emailTemplate('New Chores',emailBody, 'Chore!', 'http://localhost:3000/','Get em done! Knock em out!');
 
     emails.forEach(e => {
@@ -19,7 +21,7 @@ const addChores = async (req,res,sgMail) => {
             to: e,
             from: 'pleasedoyourchores@gmail.com',
             subject: `New Chores for ${group_name}`,
-            text: emailBody,
+            text: emailText,
             html: htmlVersion
         };
         sgMail.send(msg); 

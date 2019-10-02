@@ -8,11 +8,12 @@ const verifyEmail = async (req,res,sgMail) => {
         return res.json('Token is not valid');
     }
     const {user_name,email,verifyStr} = req.body;
+    console.log('verifyStr-',verifyStr)
     const emailText = `${user_name}, thank you for joining Chore! You are very close to having a clean home you can relax in.`;
     const emailBody = `${emailText} Please click the link or copy and paste it into your browser to verify your Chore account. http://localhost:4000/verify${verifyStr}`;
-    const htmlVersion = template.emailTemplate('Chore - Finish Registering',emailText, 'Click Here','http://localhost:4000/verify${verifyStr}','Verify your Chore account!');
+    const htmlVersion = template.emailTemplate('Chore - Finish Registering',emailText, 'Click Here',`http://localhost:4000/verify${verifyStr}`,'Verify your Chore account!');
 
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    //sgMail.setApiKey(process.env.SENDGRID_API_KEY);
     const msg = {
         to: email,
         from: 'pleasedoyourchores@gmail.com',
@@ -20,7 +21,7 @@ const verifyEmail = async (req,res,sgMail) => {
         text: emailBody,
         html: htmlVersion
     };
-    sgMail.send(msg);   
+    //sgMail.send(msg);   
     
     return res.json('Success');
 }
@@ -34,8 +35,9 @@ const forgotPassword = (req,res,sgMail) => {
     const {email,string} = req.body;
 
     const emailText = 'So you forgot your password huh. Well at least your doing your chores... You are doing your chores, right?';
-    const emailBody = `${emailText} Please click the link or copy and paste it into your browser to reset your password. http://localhost:4000/resetforgot${string}`;
-    const htmlVersion = template.emailTemplate('Chore - Forgot Password',emailText, 'Click Here','http://localhost:4000/resetforgot${string}','Lets reset your Chore password');
+    const emailBody = `${emailText} Please click the link or copy and paste it into your browser to reset your password. http://localhost:4000/forgotpassword${string}`;
+    // emailTemplate takes in - Title , Text , Button Text , Button Link URL , and text that goes above button -
+    const htmlVersion = template.emailTemplate('Chore - Forgot Password',emailText, 'Click Here',`http://localhost:3000/forgotpassword${string}`,'Lets reset your Chore password');
     
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
     const msg = {
@@ -46,8 +48,8 @@ const forgotPassword = (req,res,sgMail) => {
         html: htmlVersion
     };
     sgMail.send(msg);    
-  
-
+    console.log(msg)
+    return res.json('Success');
 }
 
 module.exports = {

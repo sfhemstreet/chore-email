@@ -1,9 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const sgMail = require('@sendgrid/mail');
+
 const chores = require('./controllers/chores');
 const groups = require('./controllers/groups');
-//const settings = require('./controllers/settings');
 const users = require('./controllers/users');
 
 /* 
@@ -35,7 +35,7 @@ app.post('/addchores',  (req,res) => {chores.addChores(req,res,sgMail)});
 app.post('/newgroup',  (req,res) => {groups.newGroup(req,res,sgMail)});
 
 // Forgot Password Email
-//app.post('/forgotpassword', (req,res) => {settings.forgotPassword(req,res,sgMail)});
+app.post('/forgotpassword', (req,res) => {users.forgotPassword(req,res,sgMail)});
 
 // Listen 
 app.listen(PORT, () => {
