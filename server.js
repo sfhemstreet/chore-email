@@ -12,13 +12,6 @@ EMAIL SERVER FOR CHORE APP
 - auth with JWT
 */
 
-// Process.env
-const {
-    PORT = 5000,
-    NODE_ENV = 'dev',
-} = process.env;
-
-const IN_PROD = NODE_ENV === 'prod';
 const app = express();
 
 // body parser middleware
@@ -37,7 +30,14 @@ app.post('/newgroup',  (req,res) => {groups.newGroup(req,res,sgMail)});
 // Forgot Password Email
 app.post('/forgotpassword', (req,res) => {users.forgotPassword(req,res,sgMail)});
 
+// Delete ACcount Email
+app.post('/deleteaccount', (req,res) => {users.deleteAccount(req,res,sgMail)});
+
 // Listen 
-app.listen(PORT, () => {
-    console.log(`App running on port ${PORT}`);
+app.listen(process.env.PORT || 5000, () => {
+    console.log(`App running on port ${process.env.PORT || 5000}`);
 });
+
+const FRONTEND_URL = 'http://localhost:3000/';
+const BACKEND_URL = 'http://localhost:4000/';
+const SECRET = 'temp_lol_secrettemp_lol_secrettemp_lol_secrettemp_lol_secrettemp_lol_secrettemp_lol_secret';

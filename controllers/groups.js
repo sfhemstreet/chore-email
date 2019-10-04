@@ -1,5 +1,7 @@
 const token = require('../utils/token');
 const template = require('../utils/emailTemplate');
+const server = require('../server');
+
 
 const newGroup = (req,res,sgMail) => {
     const data = token.checkToken(req);
@@ -8,9 +10,10 @@ const newGroup = (req,res,sgMail) => {
     }
     const {emails,groupName} = req.body;
 
-    const emailBody = `You have been added to a new chore group, ${groupName}! If you already have an account with us, log in and check it out. If you are new, sign up! It's free, easy, and you'll be connected to your group just by registering with this email. Chore is an easy way to manage all the things that need to get done.`;
+    const emailBody = `You have been added to a chore group, ${groupName}! If you already have an account with us, log in and check it out. If you are new, sign up! It's free, easy, and you'll be connected to your group just by registering with this email. Chore is an easy way to manage all the things that need to get done.`;
+    const emailText = `${emailBody} Check out your Chore group! ${process.env.FRONTEND_URL}`;
     // emailTemplate takes in - Title , Text , Button Text , Button Link URL , and text that goes above button -
-    const htmlVersion = template.emailTemplate('Chore!',emailBody);
+    const htmlVersion = template.emailTemplate('Chore!',emailBody, 'Go to Chore', `${process.env.FRONTEND_URL}`,'Get started!');
 
     emails.forEach(e => {
         sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -18,7 +21,7 @@ const newGroup = (req,res,sgMail) => {
             to: e,
             from: 'pleasedoyourchores@gmail.com',
             subject: `You have been added to a Chore Group!`,
-            text: emailBody,
+            text: emailText,
             html: htmlVersion
         };
         sgMail.send(msg); 

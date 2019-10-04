@@ -11,9 +11,9 @@ const addChores = async (req,res,sgMail) => {
     const group_name = groupName.group_name;
 
     const emailBody = `${group_name} has new chores! Get em done. Or else.`;
-    const emailText = `${emailBody} Check them out here - http://localhost:3000/`;
+    const emailText = `${emailBody} Check them out here - ${process.env.FRONTEND_URL}`;
     // emailTemplate takes in - Title , Text , Button Text , Button Link URL , and text that goes above button -
-    const htmlVersion = template.emailTemplate('New Chores',emailBody, 'Chore!', 'http://localhost:3000/','Get em done! Knock em out!');
+    const htmlVersion = template.emailTemplate('New Chores',emailBody, 'Chore!', `${process.env.FRONTEND_URL}`,'Get em done! Knock em out!');
 
     emails.forEach(e => {
         sgMail.setApiKey(process.env.SENDGRID_API_KEY);
