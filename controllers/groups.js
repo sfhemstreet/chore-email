@@ -1,10 +1,10 @@
 const token = require('../utils/token');
 const template = require('../utils/emailTemplate');
-const server = require('../server');
+require('dotenv').config()
 
 
-const newGroup = (req,res,sgMail) => {
-    const data = token.checkToken(req);
+const newGroup = async (req,res,sgMail) => {
+    const data = await token.checkToken(req).catch(err => console.log(err))
     if(!data){
         return res.json('Token is not valid');
     }
@@ -25,7 +25,6 @@ const newGroup = (req,res,sgMail) => {
             html: htmlVersion
         };
         sgMail.send(msg); 
-        console.log('new group email - ',msg)
     });
 
 }

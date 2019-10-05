@@ -1,9 +1,10 @@
 const token = require('../utils/token');
 const template = require('../utils/emailTemplate');
+require('dotenv').config()
 
 const addChores = async (req,res,sgMail) => {
     
-    const data = await token.checkToken(req);
+    const data = await token.checkToken(req).catch(err => console.log(err))
     if(!data){
         return res.json('Token is not valid');
     }
@@ -24,8 +25,7 @@ const addChores = async (req,res,sgMail) => {
             text: emailText,
             html: htmlVersion
         };
-        sgMail.send(msg); 
-        console.log('add chores message',msg);   
+        sgMail.send(msg);   
     });
     
     return res.json('Success');
