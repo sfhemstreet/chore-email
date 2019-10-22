@@ -1,4 +1,4 @@
-require('dotenv').config()
+
 
 const emailTemplate = (title, text, buttonText, buttonLink, aboveButtonText) => {
 
@@ -167,11 +167,6 @@ const emailTemplate = (title, text, buttonText, buttonLink, aboveButtonText) => 
     <tbody><tr>
       <td style="background-color:#ffffff; padding:10px 40px 50px 40px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="#ffffff"><div><div style="font-family: inherit; text-align: center"><span style="font-family: verdana,geneva,sans-serif">${email_text}</span></div><div></div></div></td>
     </tr>
-  </tbody></table><table class="module" role="module" data-type="spacer" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="dnNq8YR2nu8DNzse1aZUWt">
-    <tbody><tr>
-      <td style="padding:0px 0px 30px 0px;" role="module-content" bgcolor="">
-      </td>
-    </tr>
   </tbody></table><table class="module" role="module" data-type="divider" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="ei2zeSTvjHYmn1YhKSUfaB">
     <tbody><tr>
       <td style="padding:0px 0px 0px 0px;" role="module-content" height="100%" valign="top" bgcolor="">
@@ -248,9 +243,10 @@ const emailTemplate = (title, text, buttonText, buttonLink, aboveButtonText) => 
       </td>
       </tr>
     </tbody>
-  </table><div data-role="module-unsubscribe" class="module unsubscribe-css__unsubscribe___2CDlR" role="module" data-type="unsubscribe" style="color:#444444; font-size:12px; line-height:20px; padding:16px 16px 16px 16px; text-align:center;" data-muid="GRteXBNz7UevhwJ6u6GXE">
+  </table>
+  <div data-role="module-unsubscribe" class="module unsubscribe-css__unsubscribe___2CDlR" role="module" data-type="unsubscribe" style="color:#444444; font-size:12px; line-height:20px; padding:16px 16px 16px 16px; text-align:center;" data-muid="GRteXBNz7UevhwJ6u6GXE">
   <div class="Unsubscribe--addressLine"><p class="Unsubscribe--senderName" style="font-family:arial,helvetica,sans-serif; font-size:12px; line-height:20px;">Chore</p><p style="font-family:arial,helvetica,sans-serif; font-size:12px; line-height:20px;"><span class="Unsubscribe--senderAddress">123 Clean Drive</span>, <span class="Unsubscribe--senderCity">San Francisco</span>, <span class="Unsubscribe--senderState">California</span> <span class="Unsubscribe--senderZip">94125</span></p></div>
-  <p style="font-family:arial,helvetica,sans-serif; font-size:12px; line-height:20px;"><a class="Unsubscribe--unsubscribeLink" href="{{{unsubscribe}}}" style="">Unsubscribe</a> - <a href="{{{unsubscribe_preferences}}}" target="_blank" class="Unsubscribe--unsubscribePreferences" style="">Unsubscribe Preferences</a></p></div><table class="module" role="module" data-type="spacer" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="f5F8P1n4pQyU8o7DNMMEyW">
+  </div><table class="module" role="module" data-type="spacer" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="f5F8P1n4pQyU8o7DNMMEyW">
     <tbody><tr>
       <td style="padding:0px 0px 30px 0px;" role="module-content" bgcolor="">
       </td>

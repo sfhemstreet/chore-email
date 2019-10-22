@@ -1,6 +1,6 @@
 const token = require('../utils/token');
 const template = require('../utils/emailTemplate');
-require('dotenv').config()
+
 
 const addChores = async (req,res,sgMail) => {
     

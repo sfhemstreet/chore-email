@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const sgMail = require('@sendgrid/mail');
-require('dotenv').config()
+require('dotenv').config({path: __dirname + '/.env'})
 
 const chores = require('./controllers/chores');
 const groups = require('./controllers/groups');
