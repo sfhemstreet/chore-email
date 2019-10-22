@@ -1,6 +1,6 @@
 const token = require('../utils/token');
 const template = require('../utils/emailTemplate');
-require('dotenv').config()
+
 
 // VERIFY EMAIL
 const verifyEmail = async (req,res,sgMail) => {

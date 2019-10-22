@@ -1,6 +1,6 @@
 const token = require('../utils/token');
 const template = require('../utils/emailTemplate');
-require('dotenv').config()
+
 
 
 const newGroup = async (req,res,sgMail) => {
@@ -26,6 +26,8 @@ const newGroup = async (req,res,sgMail) => {
         };
         sgMail.send(msg); 
     });
+
+    return res.json('Success');
 
 }
 
