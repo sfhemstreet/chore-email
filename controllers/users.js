@@ -3,7 +3,7 @@ const template = require('../utils/emailTemplate');
 
 
 // VERIFY EMAIL
-const verifyEmail = async (req,res,sgMail) => {
+const verifyEmail = (req,res,sgMail) => {
     const data = await token.checkToken(req).catch(err => console.log(err))
     if(!data){
         return res.json('Token is not valid');
@@ -23,7 +23,7 @@ const verifyEmail = async (req,res,sgMail) => {
         html: htmlVersion
     };
     sgMail.send(msg);   
-    
+    console.log(email, verifyStr)
     return res.json('Success');
 }
 
