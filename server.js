@@ -39,6 +39,3 @@ app.listen(process.env.PORT || 5000, () => {
     console.log(`App running on port ${process.env.PORT || 5000}`);
 });
 
-const FRONTEND_URL = 'http://localhost:3000/';
-const BACKEND_URL = 'http://localhost:4000/';
-const SECRET = 'temp_lol_secrettemp_lol_secrettemp_lol_secrettemp_lol_secrettemp_lol_secrettemp_lol_secret';
