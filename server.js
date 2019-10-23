@@ -34,6 +34,11 @@ app.post('/forgotpassword', (req,res) => {users.forgotPassword(req,res,sgMail)})
 // Delete ACcount Email
 app.post('/deleteaccount', (req,res) => {users.deleteAccount(req,res,sgMail)});
 
+// Say Hi 
+app.get('/', (req,res) => {
+    return res.json('Hi');
+});
+
 // Listen 
 app.listen(process.env.PORT || 5000, () => {
     console.log(`App running on port ${process.env.PORT || 5000}`);
