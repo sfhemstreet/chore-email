@@ -10,7 +10,7 @@ const checkToken = (req) => {
 			token = token.slice(7, token.length);
 		}
 		if (token) {
-			jwt.verify(token, process.env.TOKEN_SECRET, (err, decoded) => {
+			jwt.verify(token, process.env.TOKEN_SECRET, {algorithm: 'HS256', expiresIn: '2d'}, (err, decoded) => {
 				if (err) {
 					console.log('token err',err);
 					reject();
@@ -19,7 +19,8 @@ const checkToken = (req) => {
 					//console.log('token decoded!',decoded);
 					resolve(decoded);
 				}
-			});
+			})
+			.catch(err => console.log(err))
 		} 
 		else {
 			console.log('no token in req');
